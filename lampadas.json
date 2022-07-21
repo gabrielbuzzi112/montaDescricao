@@ -1,0 +1,89 @@
+[
+  {
+    "lampada": "Bulbo",
+    "soquete": ["E27"],
+    "tec": ["LED", "INCANDESCENTE"]
+  },
+
+  {
+    "lampada": "Vela",
+    "soquete": ["E27","E14"],
+    "tec": ["LED", "INCANDESCENTE"]
+  },
+
+  {
+    "lampada": "PAR20",
+    "soquete": ["E27"],
+    "tec": ["LED", "INCANDESCENTE"]
+  },
+
+  {
+    "lampada": "PAR30",
+    "soquete": ["E27"],
+    "tec": ["LED", "INCANDESCENTE"]
+  },
+
+  {
+    "lampada": "PAR38",
+    "soquete": ["E27"],
+    "tec": ["LED", "INCANDESCENTE"]
+  },
+
+  {
+    "lampada": "DICROICA / PAR16 / MR16",
+    "soquete": ["GU10","GU5.3"],
+    "tec": ["LED","HALOGENA"]
+  },
+  {
+    "lampada": "MINI DICROICA / MR11",
+    "soquete": ["GU10","GU4"],
+    "tec": ["LED","HALOGENA"]
+  },
+  {
+    "lampada": "PALITO CURTA",
+    "soquete": ["R7S"],
+    "tec": ["LED","HALOGENA"]
+  },
+
+  {
+    "lampada": "PALITO LONGA",
+    "soquete": ["R7S"],
+    "tec": ["LED","HALOGENA"]
+  },
+
+  {
+    "lampada": "HALOPIN",
+    "soquete": ["G9"],
+    "tec": ["LED","HALOGENA"]
+  },
+
+  {
+    "lampada": "AR48",
+    "soquete": ["GY4"],
+    "tec": ["LED","HALOGENA"]
+  },
+
+  {
+    "lampada": "AR70",
+    "soquete": ["GU10","BA15D"],
+    "tec": ["LED","HALOGENA"]
+  },
+
+  {
+    "lampada": "AR111",
+    "soquete": ["GU10","G53"],
+    "tec": ["LED","HALOGENA"]
+  },
+
+  {
+    "lampada": "Bolinha",
+    "soquete": ["E27"],
+    "tec": ["LED","HALOGENA"]
+  },
+
+  {
+    "lampada": "LED Filamento",
+    "soquete": ["E27"],
+    "tec": ["LED"]
+  }
+]
