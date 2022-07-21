@@ -1,6 +1,19 @@
-function writeInfo (adicional) {
+function temperaturaCor (temp) {
+    //temp.parseInt();
+    if(temp<=3200){
+        return "Luz Branca Quente";
+    }
+    if(temp<=4200){
+        return "Luz Branca Neutra";
+    }
+    else {
+        return "Luz Branca Fria";
+    }
+}
+
+function writeInfoPcs (adicional) {
     var texto;
-    var pcsOrigem = $("input[name='origem']:checked").val(); //
+    var pcsOrigem = $("input[name='origemPcs']:checked").val(); //
     var pcsFamilia = $("#pcs_inputFamilia").val(); //
     var pcsFabricante = $("#pcs_inputFabricante").val(); //
     var pcsReferencia = $("#pcs_inputRef").val(); //
@@ -43,7 +56,7 @@ function writeInfo (adicional) {
     }
     else if(pcsFonte==="Integrado") {
         texto += "Potência: " + pcsPotencia + " W\n" +
-            "Temperatura da Cor: " + pcsTempCor + " K\n" +
+            "Temperatura da Cor: " + temperaturaCor(pcsTempCor) +" ("+ pcsTempCor + " K)\n" +
             "Fluxo luminoso: " + pcsFluxo + " lm\n"
         ;
     }
@@ -145,132 +158,89 @@ function writeInfo (adicional) {
     document.getElementById("descricaoFinal").innerHTML = texto;
 }
 
+function writeInfoLamp (adicional) {
+    var texto;
+    
+    
+    var lampFabricante = $("#lamp_inputFabricante").val(); //
+    var lampReferencia = $("#lamp_inputRef").val(); //
+    var lampModelo = $("#lamp_inputModelo").val(); //
+    var lampModelo = $("#lamp_inputModelo").val(); //
+    var lampOrigem = $("input[name='origemLamp']:checked").val(); //
+    var lampPotencia = $("#lamp_inputPotencia").val(); //
+    var lampTensao = $("#lamp_inputTensao").val(); //
+    var lampTempCor = $("#lamp_inputTempCor").val(); //
+    var lampAngulo = $("#lamp_inputAngulo").val(); //
+    var lampFluxo = $("#lamp_inputFluxo").val(); //
+    var lampVidaUtil = $("#lamp_inputVidaUtil").val(); //
+    var lampSoquete = $("#lamp_inputSoquete").val(); //
+    var lampDimerizavel = $("input[name='dimerizavelLamp']:checked").val(); //
+    var lampComprimento = $("#lamp_inputComprimento").val(); //
+    var lampLargura = $("#lamp_inputLargura").val(); //
+    var lampAltura = $("#lamp_inputAltura").val(); //
+    var lampDiametro = $("#lamp_inputDiametro").val(); //
+    var lampObs = $("#lamp_textObsLamp").val(); //
+
+    texto = 
+        "Fabricante: " + lampFabricante + "\n" +
+        "Referência: " + lampReferencia + "\n" +
+        "Modelo: " + lampModelo + "\n" +
+        "Origem: " + lampOrigem + "\n" +
+        "Potência: " + lampPotencia + " W\n" +
+        "Tensão: " + lampTensao + " V\n" +
+        "Temperatura da Cor: " + temperaturaCor(lampTempCor) +" ("+ lampTempCor + " K)\n" +
+        "Ângulo de Abertura: " + lampAngulo + "º\n" +
+        "Fluxo Luminoso: " + lampFluxo + " lm\n" +
+        "Vida Útil Estimada: " + lampVidaUtil + " horas\n" +
+        "Soquete: " + lampSoquete + "\n" +
+        "Dimerização: " + lampDimerizavel + "\n" +
+        "Dimensões: ";
+        
+        if(lampComprimento) {
+            texto += " (C)"  + lampComprimento;
+        }
+        if(lampLargura) {
+            if(lampComprimento) {
+                texto += " x (L)" + lampLargura;
+            } else {
+                texto += " (L)" + lampLargura;
+            }
+        }
+        if(lampAltura) {
+            if(lampLargura) {
+                texto += " x (A)" + lampAltura;
+            } else if(lampComprimento) {
+                texto += " x (A)" + lampAltura;
+            } else {
+                texto += " (A)" + lampAltura;
+            }
+        }
+    
+        if(lampDiametro) {
+            if(lampAltura) {
+                texto += " x (Ø)" + lampDiametro;
+            } else if(lampLargura) {
+                texto += " x (Ø)" + lampDiametro;
+            } else if(lampComprimento) {
+                texto += " x (Ø)" + lampDiametro;
+            } else {
+                texto += " (Ø)" + lampDiametro;
+            }
+        }
+    
+        texto += "\n";
+
+        if(lampObs) {
+            texto += lampObs + "\n";
+        }
+        document.getElementById("descricaoFinal").innerHTML = texto;
+}
 $("#form1").change(function(){
-    //alert("oi");
-    writeInfo(0);
-});
-/*
-$("#pcs_inputFamilia").change(function() {
-    writeInfo(0);
+    writeInfoPcs(0);
 });
 
-$("#pcs_inputFabricante").change(function() {
-    writeInfo(0);
-});
-
-$("#pcs_oNacional").change(function() {
-    writeInfo(0);
-});
-
-$("#pcs_oImport").change(function() {
-    writeInfo(0);
-});
-
-$("#pcs_inputFonteIluminacao").change(function() {
-    writeInfo(0);
-});
-
-$("#pcs_inputQuantidadeLamps").change(function() {
-    writeInfo(0);
-});
-
-$("#pcs_inputTipoLamp").change(function() {
-    writeInfo(0);
-});
-
-$("#pcs_inputSoquete").change(function() {
-    writeInfo(0);
-});
-
-$("#pcs_inputPotencia").change(function() {
-    writeInfo(0);
-});
-
-$("#pcs_inputTempCor").change(function() {
-    writeInfo(0);
-});
-
-$("#pcs_inputFluxo").change(function() {
-    writeInfo(0);
-});
-
-$("#pcs_inputTensao").change(function() {
-    writeInfo(0);
-});
-
-$("#pcs_inputPosicao").change(function() {
-    writeInfo(0);
-});
-
-$("input[name='embutirSobrePor']:checked").change(function() {
-    writeInfo(0);
-});
-
-$("input[name='embutirSobrePor']").click(function() {
-    writeInfo(0);
-});
-
-//Original
-/*
-$("#pcs_inputAplicacao").change(function() {
-    writeInfo(0);
-});
-*
-
-$("#pcs_inputComprimento").change(function() {
-    writeInfo(0);
-});
-
-$("#pcs_inputLargura").change(function() {
-    writeInfo(0);
-});
-
-$("#pcs_inputAltura").change(function() {
-    writeInfo(0);
-});
-
-$("#pcs_inputDiametro").change(function() {
-    writeInfo(0);
-});
-
-$("#pcs_inputComprimentoNicho") .change(function() {
-    writeInfo(0);
-});
-
-$("#pcs_inputLarguraNicho").change(function() {
-    writeInfo(0);
-});
-
-$("#pcs_inputDiametroNicho").change(function() {
-    writeInfo(0);
-});
-
-$("#pcs_inputComprimentoFio").change(function() {
-    writeInfo(0);
-});
-
-$("#pcs_inputDiametroFio").change(function() {
-    writeInfo(0);
-});
-
-$("#pcs_inputCor").change(function() {
-    writeInfo(0);
-});
-
-$("#pcs_inputMaterial").change(function() {
-    writeInfo(0);
-});
-
-$("#pcs_inputAcabamento").change(function() {
-    writeInfo(0);
-});
-
-$("#pcs_textObs").change(function() {
-    writeInfo(0);
-});
-*/
 $("#form2").change(function(){
-    alert("oi");
+    writeInfoLamp(0);
 });
 
 
