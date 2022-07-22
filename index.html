@@ -12,18 +12,39 @@
         <div class="row">
             <div class="col-md-2"></div>
             <div class="jumbotron col-md-8 bg-light">
-                <h2 class="mb-5">Ferramenta Montadora de Descricoes</h2>
-                <ul class="nav nav-tabs">
-                    <li class="nav-item">
-                        <a class="nav-link" id="linkIluminacao">Iluminacao</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" id="linkLampadas">Lampadas</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" id="linkUtensilios">Utensilios</a>
-                    </li>
-                </ul>
+                <h1 class="text-center">Ferramenta Montadora de Descrições</h1>
+                <nav class="navbar navbar-expand-lg bg-light">
+                    <div class="container-fluid">
+                        <a class="navbar-brand">
+                            <img src="logo.png" alt="" width="60" height="48" class="d-inline-block align-text-top">
+                          </a>
+                        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                            <span class="navbar-toggler-icon"></span>
+                        </button>
+                        <div class="collapse navbar-collapse" id="navbarNav">
+                            <ul class="navbar-nav nav-tabs">
+                                <li class="nav-item">
+                                    <a class="nav-link" id="linkIluminacao">Peças</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" id="linkLampadas">Lâmpadas</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </nav>
+                
+                <!--
+                    <h2 class="mb-5">Ferramenta Montadora de Descricoes</h2>
+                    <ul class="nav navbar-dark nav-tabs justify-content-center">
+                        <li class="nav-item">
+                            <a class="nav-link" id="linkIluminacao">Peças</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" id="linkLampadas">Lâmpadas</a>
+                        </li>
+                    </ul>
+                -->
                 <!-- Pecas -->
                 <form id="form1">
                     <h4 class="mt-2">Identificacao do Produto</h4>
@@ -283,6 +304,18 @@
                             </select>
                         </div>
                         <div class="form-group col-md-6">
+                            <label for="lamp_inputTecnologia">Tecnologia</label>
+                            <select id="lamp_inputTecnologia" class="form-control">
+                                <option selected>Escolher...</option>
+                                <option id="lamp_tecLed" value="LED">LED</option>
+                                <option id="lamp_tecInc" value="Incandescente">Incandescente</option>
+                                <option id="lamp_tecFluor" value="Fluorescente">Fluorescente</option>
+                                <option id="lamp_tecHalo" value="Halôgena">Halôgena</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
                             <label for="lamp_oNacional">Origem</label><br>
                             <div class="mt-2 ml-4">
                                 <div class="form-check form-check-inline">
@@ -392,6 +425,7 @@
                 </form>
                 <br><br>
                 <textarea class="form-control" id="descricaoFinal" rows="20"></textarea>
+                <p id="version"></p>
             </div>
             <div class="col-md-2"></div>
         </div>

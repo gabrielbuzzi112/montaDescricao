@@ -1,3 +1,9 @@
+let version = "v2.0 (21/07/2022)";
+
+$(document).ready(function(){
+    $("#version").html(version);
+});
+
 function temperaturaCor (temp) {
     //temp.parseInt();
     if(temp<=3200){
@@ -49,8 +55,8 @@ function writeInfoPcs (adicional) {
         "Fonte de Iluminação: " + pcsFonte + "\n";
 
     if(pcsFonte==="Lâmpada"){
-        texto += "Quantidade de Lâmpadas: " + pcsQtdLamp + "\n" +
-            "Lâmpada Indicada: " + pcsTipoLamp + "\n" +
+        texto += "Quantidade de Lâmpadas: " + pcsQtdLamp + " (Não Acompanha o Produto)\n" +
+            "Lâmpada Indicada: " + pcsTipoLamp + " (Não Acompanha o Produto)\n" +
             "Soquete: " + pcsSoquete + "\n"
         ;
     }
@@ -154,8 +160,14 @@ function writeInfoPcs (adicional) {
         texto += pcsObs + "\n";
     }
 
+    
+
     //alert(texto);
     document.getElementById("descricaoFinal").innerHTML = texto;
+
+    $.get("texto.txt", function(text){
+        $("#descricaoFinal").append(text);
+    },"text");
 }
 
 function writeInfoLamp (adicional) {
@@ -165,7 +177,7 @@ function writeInfoLamp (adicional) {
     var lampFabricante = $("#lamp_inputFabricante").val(); //
     var lampReferencia = $("#lamp_inputRef").val(); //
     var lampModelo = $("#lamp_inputModelo").val(); //
-    var lampModelo = $("#lamp_inputModelo").val(); //
+    var lampTecnologia = $("#lamp_inputTecnologia").val(); //
     var lampOrigem = $("input[name='origemLamp']:checked").val(); //
     var lampPotencia = $("#lamp_inputPotencia").val(); //
     var lampTensao = $("#lamp_inputTensao").val(); //
@@ -184,6 +196,7 @@ function writeInfoLamp (adicional) {
     texto = 
         "Fabricante: " + lampFabricante + "\n" +
         "Referência: " + lampReferencia + "\n" +
+        "Tecnologia: " + lampTecnologia + "\n" +
         "Modelo: " + lampModelo + "\n" +
         "Origem: " + lampOrigem + "\n" +
         "Potência: " + lampPotencia + " W\n" +
@@ -233,7 +246,12 @@ function writeInfoLamp (adicional) {
         if(lampObs) {
             texto += lampObs + "\n";
         }
+
         document.getElementById("descricaoFinal").innerHTML = texto;
+
+        $.get("texto.txt", function(text){
+            $("#descricaoFinal").append(text);
+        },"text");
 }
 $("#form1").change(function(){
     writeInfoPcs(0);
