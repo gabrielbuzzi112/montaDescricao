@@ -1,15 +1,15 @@
-let version = "v4.0 (05/09/2022)";
+let version = "v4.1 (28/03/2023)";
 
-$(document).ready(function(){
+$(document).ready(function () {
     $("#version").html(version);
 });
 
-function temperaturaCor (temp) {
+function temperaturaCor(temp) {
     //temp.parseInt();
-    if(temp<=3200){
+    if (temp <= 3200) {
         return "Luz Branca Quente";
     }
-    if(temp<=4200){
+    if (temp <= 4200) {
         return "Luz Branca Neutra";
     }
     else {
@@ -17,7 +17,7 @@ function temperaturaCor (temp) {
     }
 }
 
-function writeInfoPcs () {
+async function writeInfoPcs() {
     var texto;
     var pcsOrigem = $("input[name='origemPcs']:checked").val(); //
     var pcsFamilia = $("#pcs_inputFamilia").val(); //
@@ -28,7 +28,7 @@ function writeInfoPcs () {
     var pcsTipoLamp = $("#pcs_inputTipoLamp").val(); //
     var pcsSoquete = $("#pcs_inputSoquete").val(); //
     var pcsPotencia = $("#pcs_inputPotencia").val(); //
-	var pcsPotenciaMax = $("#pcs_inputPotenciaMax").val(); //
+    var pcsPotenciaMax = $("#pcs_inputPotenciaMax").val(); //
     var pcsTempCor = $("#pcs_inputTempCor").val(); //
     var pcsFluxo = $("#pcs_inputFluxo").val(); //
     var pcsTensao = $("#pcs_inputTensao").val(); //
@@ -49,57 +49,57 @@ function writeInfoPcs () {
     var pcsAcabamento = $("#pcs_inputAcabamento").val(); //
     var pcsObs = $("#pcs_textObs").val(); //
 
-    texto = "Família:" + pcsFamilia + "<br>" +
-        "Fabricante: " + pcsFabricante + "<br>" +
-        "Referência: " + pcsReferencia + "<br>" +
-        "Origem: " + pcsOrigem + "<br>" +
-        "Fonte de Iluminação: " + pcsFonte + "<br>";
+    texto = "<b>Família:</b>" + pcsFamilia + "<br>" +
+        "<b>Fabricante:</b> " + pcsFabricante + "<br>" +
+        "<b>Referência:</b> " + pcsReferencia + "<br>" +
+        "<b>Origem:</b> " + pcsOrigem + "<br>" +
+        "<b>Fonte de Iluminação:</b> " + pcsFonte + "<br>";
 
-    if(pcsFonte==="Lâmpada"){
-        texto += "Quantidade de Lâmpadas: " + pcsQtdLamp + " (Não Acompanha o Produto)<br>" +
-            "Lâmpada Indicada: " + pcsTipoLamp + " (Não Acompanha o Produto)<br>" +
-            "Soquete: " + pcsSoquete + "<br>" +
-			"Potência Máx: " + pcsPotenciaMax + " W<br>"
-        ;
+    if (pcsFonte === "Lâmpada") {
+        texto += "<b>Quantidade de Lâmpadas:</b> " + pcsQtdLamp + " (Não Acompanha o Produto)<br>" +
+            "<b>Lâmpada Indicada:</b> " + pcsTipoLamp + " (Não Acompanha o Produto)<br>" +
+            "<b>Soquete:</b> " + pcsSoquete + "<br>" +
+            "<b>Potência Máx:</b> " + pcsPotenciaMax + " W<br>"
+            ;
     }
-    else if(pcsFonte==="Integrado") {
-        texto += "Potência: " + pcsPotencia + " W<br>" +
-            "Temperatura da Cor: " + temperaturaCor(pcsTempCor) +" ("+ pcsTempCor + " K)<br>" +
-            "Fluxo luminoso: " + pcsFluxo + " lm<br>"
-        ;
+    else if (pcsFonte === "Integrado") {
+        texto += "<b>Potência:</b> " + pcsPotencia + " W<br>" +
+            "<b>Temperatura da Cor:</b> " + temperaturaCor(pcsTempCor) + " (" + pcsTempCor + " K)<br>" +
+            "<b>Fluxo luminoso: </b>" + pcsFluxo + " lm<br>"
+            ;
     }
 
-    texto += "Tensão: " + pcsTensao + "<br>" +
-        "Posição: " + pcsEmbutirSobrepor + " no(a) " + pcsPosicao + "<br>" +
-        "Ambiente: " + pcsAplicacao + "<br>" +
-        "Dimensões(cm):"
-    ;
-    if(pcsComprimento) {
-        texto += " (C)"  + pcsComprimento;
+    texto += "<b>Tensão:</b> " + pcsTensao + "<br>" +
+        "<b>Posição:</b> " + pcsEmbutirSobrepor + " no(a) " + pcsPosicao + "<br>" +
+        "<b>Ambiente:</b> " + pcsAplicacao + "<br>" +
+        "<b>Dimensões(cm):</b>"
+        ;
+    if (pcsComprimento) {
+        texto += " (C)" + pcsComprimento;
     }
-    if(pcsLargura) {
-        if(pcsComprimento) {
+    if (pcsLargura) {
+        if (pcsComprimento) {
             texto += " x (L)" + pcsLargura;
         } else {
             texto += " (L)" + pcsLargura;
         }
     }
-    if(pcsAltura) {
-        if(pcsLargura) {
+    if (pcsAltura) {
+        if (pcsLargura) {
             texto += " x (A)" + pcsAltura;
-        } else if(pcsComprimento) {
+        } else if (pcsComprimento) {
             texto += " x (A)" + pcsAltura;
         } else {
             texto += " (A)" + pcsAltura;
         }
     }
 
-    if(pcsDiametro) {
-        if(pcsAltura) {
+    if (pcsDiametro) {
+        if (pcsAltura) {
             texto += " x (Ø)" + pcsDiametro;
-        } else if(pcsLargura) {
+        } else if (pcsLargura) {
             texto += " x (Ø)" + pcsDiametro;
-        } else if(pcsComprimento) {
+        } else if (pcsComprimento) {
             texto += " x (Ø)" + pcsDiametro;
         } else {
             texto += " (Ø)" + pcsDiametro;
@@ -108,25 +108,25 @@ function writeInfoPcs () {
 
     texto += "<br>";
 
-    if(pcsEmbutirSobrepor==="Embutir"){
-        texto += "Dimensões do Nicho(cm): ";
+    if (pcsEmbutirSobrepor === "Embutir") {
+        texto += "<b>Dimensões do Nicho(cm):</b> ";
 
-        if(pcsComprimentoNicho) {
-            texto += " (C)"  + pcsComprimentoNicho;
+        if (pcsComprimentoNicho) {
+            texto += " (C)" + pcsComprimentoNicho;
         }
 
-        if(pcsLarguraNicho) {
-            if(pcsComprimentoNicho) {
+        if (pcsLarguraNicho) {
+            if (pcsComprimentoNicho) {
                 texto += " x (L)" + pcsLarguraNicho;
             } else {
                 texto += " (L)" + pcsLarguraNicho;
             }
         }
 
-        if(pcsDiametroNicho) {
-            if(pcsLarguraNicho) {
+        if (pcsDiametroNicho) {
+            if (pcsLarguraNicho) {
                 texto += " x (Ø)" + pcsDiametroNicho;
-            } else if(pcsComprimentoNicho) {
+            } else if (pcsComprimentoNicho) {
                 texto += " x (Ø)" + pcsDiametroNicho;
             } else {
                 texto += " (Ø)" + pcsDiametroNicho;
@@ -135,14 +135,14 @@ function writeInfoPcs () {
         texto += "<br>";
     }
 
-    if(pcsFamilia==="Pendente") {
-        texto += "Dimensões do Fio(cm): ";
-        if(pcsComprimentoFio) {
-            texto += " (C)"  + pcsComprimentoFio;
+    if (pcsFamilia === "Pendente") {
+        texto += "<b>Dimensões do Fio(cm): </b>";
+        if (pcsComprimentoFio) {
+            texto += " (C)" + pcsComprimentoFio;
         }
 
-        if(pcsDiametroFio) {
-            if(pcsComprimentoFio) {
+        if (pcsDiametroFio) {
+            if (pcsComprimentoFio) {
                 texto += " x (Ø)" + pcsDiametroFio;
             } else {
                 texto += " (Ø)" + pcsDiametroFio;
@@ -151,36 +151,32 @@ function writeInfoPcs () {
         texto += "<br>";
     }
 
-    texto += "Cor: " + pcsCor + "<br>" +
-        "Material: " + pcsMaterial + "<br>";
+    texto += "<b>Cor: </b>" + pcsCor + "<br>" +
+        "<b>Material:</b> " + pcsMaterial + "<br>";
 
-    if(pcsAcabamento) {
-	texto += "Acabamento: " + pcsAcabamento + "<br>";
-    }	
+    if (pcsAcabamento) {
+        texto += "<b>Acabamento: </b>" + pcsAcabamento + "<br>";
+    }
 
-    if(pcsObs) {
+    if (pcsObs) {
         texto += pcsObs + "<br>";
     }
 
-    
 
-    let adicional = "";
-	
-    $.get("texto.txt", function(text){
-        adicional = text;
-    },"text");
-		
-	console.log(adicional);
-	
-	texto += "<br>"+adicional;
-		
-	$('#descricaoFinal').html(texto);
+    let adicional = await $.get("http://localhost/montaDescricao/texto.html", function (text) {
+       return text
+    }, "html");
+
+    texto += "<br>" + adicional;
+    
+    $('#descricaoFinal').html(texto);
 }
 
-function writeInfoLamp () {
+
+function writeInfoLamp() {
     var texto;
-    
-    
+
+
     var lampFabricante = $("#lamp_inputFabricante").val(); //
     var lampReferencia = $("#lamp_inputRef").val(); //
     var lampModelo = $("#lamp_inputModelo").val(); //
@@ -200,7 +196,7 @@ function writeInfoLamp () {
     var lampDiametro = $("#lamp_inputDiametro").val(); //
     var lampObs = $("#lamp_textObsLamp").val(); //
 
-    texto = 
+    texto =
         "Fabricante:" + lampFabricante + "<br>" +
         "Referência: " + lampReferencia + "<br>" +
         "Tecnologia: " + lampTecnologia + "<br>" +
@@ -208,71 +204,71 @@ function writeInfoLamp () {
         "Origem: " + lampOrigem + "<br>" +
         "Potência: " + lampPotencia + " W<br>" +
         "Tensão: " + lampTensao + " V<br>" +
-        "Temperatura da Cor: " + temperaturaCor(lampTempCor) +" ("+ lampTempCor + " K)<br>" +
+        "Temperatura da Cor: " + temperaturaCor(lampTempCor) + " (" + lampTempCor + " K)<br>" +
         "Ângulo de Abertura: " + lampAngulo + "º<br>" +
         "Fluxo Luminoso: " + lampFluxo + " lm<br>" +
         "Vida Útil Estimada: " + lampVidaUtil + " horas<br>" +
         "Soquete: " + lampSoquete + "<br>" +
         "Dimerizável: " + lampDimerizavel + "<br>" +
         "Dimensões: ";
-        
-        if(lampComprimento) {
-            texto += " (C)"  + lampComprimento;
-        }
-        if(lampLargura) {
-            if(lampComprimento) {
-                texto += " x (L)" + lampLargura;
-            } else {
-                texto += " (L)" + lampLargura;
-            }
-        }
-        if(lampAltura) {
-            if(lampLargura) {
-                texto += " x (A)" + lampAltura;
-            } else if(lampComprimento) {
-                texto += " x (A)" + lampAltura;
-            } else {
-                texto += " (A)" + lampAltura;
-            }
-        }
-    
-        if(lampDiametro) {
-            if(lampAltura) {
-                texto += " x (Ø)" + lampDiametro;
-            } else if(lampLargura) {
-                texto += " x (Ø)" + lampDiametro;
-            } else if(lampComprimento) {
-                texto += " x (Ø)" + lampDiametro;
-            } else {
-                texto += " (Ø)" + lampDiametro;
-            }
-        }
-    
-        texto += "<br>";
 
-        if(lampObs) {
-            texto += lampObs + "<br>";
+    if (lampComprimento) {
+        texto += " (C)" + lampComprimento;
+    }
+    if (lampLargura) {
+        if (lampComprimento) {
+            texto += " x (L)" + lampLargura;
+        } else {
+            texto += " (L)" + lampLargura;
         }
+    }
+    if (lampAltura) {
+        if (lampLargura) {
+            texto += " x (A)" + lampAltura;
+        } else if (lampComprimento) {
+            texto += " x (A)" + lampAltura;
+        } else {
+            texto += " (A)" + lampAltura;
+        }
+    }
 
-        
-		//document.getElementById("descricaoFinal").innerHTML = texto;
-		
-		let adicional = "";
-        $.get("texto.txt", function(text){
-            adicional = text;
-        },"text");
-		
-		
-		
-		texto += "<br>"+adicional;
-		
-		$('#descricaoFial').html(texto);
+    if (lampDiametro) {
+        if (lampAltura) {
+            texto += " x (Ø)" + lampDiametro;
+        } else if (lampLargura) {
+            texto += " x (Ø)" + lampDiametro;
+        } else if (lampComprimento) {
+            texto += " x (Ø)" + lampDiametro;
+        } else {
+            texto += " (Ø)" + lampDiametro;
+        }
+    }
+
+    texto += "<br>";
+
+    if (lampObs) {
+        texto += lampObs + "<br>";
+    }
+
+
+    //document.getElementById("descricaoFinal").innerHTML = texto;
+
+    let adicional = "";
+    $.get("texto.txt", function (text) {
+        adicional = text;
+    }, "text");
+
+
+
+    texto += "<br>" + adicional;
+
+    $('#descricaoFial').html(texto);
 }
-$("#form1").change(function(){
+$("#form1").change(function () {
     writeInfoPcs();
 });
 
-$("#form2").change(function(){
+$("#form2").change(function () {
     writeInfoLamp();
 });
 

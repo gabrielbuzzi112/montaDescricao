@@ -1,201 +1,199 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Ferramenta Montadora de Descrições</title>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
-</head>
-<body>
-    <div class="container-fluid mt-4">
-        <div class="row">
-            <div class="col-md-2"></div>
-            <div class="jumbotron col-md-8 bg-light">
-                <h1 class="text-center">Ferramenta Montadora de Descrições</h1>
-                <nav class="navbar navbar-expand-lg bg-light">
-                    <div class="container-fluid">
-                        <a class="navbar-brand">
-                            <img src="logo.png" alt="" width="60" height="48" class="d-inline-block align-text-top">
-                          </a>
-                        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                            <span class="navbar-toggler-icon"></span>
-                        </button>
-                        <div class="collapse navbar-collapse" id="navbarNav">
-                            <ul class="navbar-nav nav-tabs">
-                                <li class="nav-item">
-                                    <a class="nav-link" id="linkIluminacao">Peças</a>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="nav-link" id="linkLampadas">Lâmpadas</a>
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
-                </nav>
-                
-                <!--
-                    <h2 class="mb-5">Ferramenta Montadora de Descricoes</h2>
-                    <ul class="nav navbar-dark nav-tabs justify-content-center">
-                        <li class="nav-item">
-                            <a class="nav-link" id="linkIluminacao">Peças</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" id="linkLampadas">Lâmpadas</a>
-                        </li>
-                    </ul>
-                -->
-                <!-- Pecas -->
-                <form id="form1">
-                    <h4 class="mt-2">Identificação do Produto</h4>
-                    <hr/>
-                    <div class="form-row">
-                        <div class="form-group col-md-6">
-                            <label for="pcs_inputFamilia">Família</label>
-                            <select id="pcs_inputFamilia" class="form-control">
-                                <option selected>Escolher...</option>
-                                <option id="pcs_fArandela" value="Arandela">Arandela</option>
-                                <option id="pcs_fPlafom" value="Plafon">Plafon</option>
-                                <option id="pcs_fPendente" value="Pendente">Pendente</option>
-                                <option id="pcs_fLustre" value="Lustre">Lustre</option>
-                                <option id="pcs_fEmbutido" value="Embutido">Embutido</option>
-                                <option id="pcs_fLuminaria" value="Luminaria">Luminária</option>
-                                <option id="pcs_fSpotSobrepor" value="SpotSoprepor">Spot de soprepor</option>
-                                <option id="pcs_fPoste" value="Poste">Poste</option>
-                                <option id="pcs_fRefletor" value="Refletor">Refletor</option>
-                                <option id="pcs_fBalizadorSolo" value="Balizador de Solo">Balizador de Solo</option>
-                            </select>
-                        </div>
-                        <div class="form-group col-md-6">
-                            <label for="pcs_inputFabricante">Fabricante</label>
-                            <input type="text" class="form-control" id="pcs_inputFabricante">
-                        </div>
-                    </div>
-                    <div class="form-row">
-                        <div class="form-group col-md-6">
-                            <label for="pcs_inputRef">Referência</label>
-                            <input type="text" class="form-control" id="pcs_inputRef">
-                        </div>
-                        <div class="form-group col-md-6">
-                            <label for="pcs_oNacional">Origem</label><br>
-                            <div class="mt-2 ml-4">
-                                <div class="form-check form-check-inline">
-                                    <input class="form-check-input" type="radio" name="origemPcs" id="pcs_oNacional" value="Nacional" checked>
-                                    <label class="form-check-label" for="pcs_oNacional">
-                                        Nacional
-                                    </label>
-                                </div>
-                                <div class="form-check form-check-inline">
-                                    <input class="form-check-input" type="radio" name="origemPcs" id="pcs_oImport" value="Importado">
-                                    <label class="form-check-label" for="pcs_oImport">
-                                        Importado
-                                    </label>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <h4 class="mt-2">Especificações do Produto</h4>
-                    <hr/>
-                    <h5 class="mt-2">Iluminação</h5>
-                    <div class="form-group">
-                        <label for="pcs_inputFonteIluminacao">Fonte de Iluminação</label>
-                        <select id="pcs_inputFonteIluminacao" class="form-control">
-                            <option selected>Escolher...</option>
-                            <option id="pcs_fLamp" value="Lâmpada">Lâmpada</option>
-                            <option id="pcs_fIntegrado" value="LED Integrado">LED Integrado</option>
-                        </select>
-                    </div>
-                    <div id="formPcsComLamp">
-                        <div class="form-row">
-                            <div class="form-group col-md-4">
-                                <label for=" ">Quantidade de Lâmpadas</label>
-                                <input type="number" class="form-control" id="pcs_inputQuantidadeLamps">
-                            </div>
-                            <div class="form-group col-md-8">
-                                <label for="pcs_inputTipoLamp">Tipo da Lâmpada</label>
-                                <select id="pcs_inputTipoLamp" class="form-control">
-                                    <option selected>Escolher...</option>
-                                </select>
-                            </div>
-                        </div>
-                        <div class="form-row">
-                            <div class="form-group col-md-4">
-                                <label for="pcs_inputPotenciaMax">Potência Máx (W)</label>
-                                <input type="number" class="form-control" id="pcs_inputPotenciaMax">
-                            </div>
-                            <div class="form-group col-md-8">
-                                <label for="pcs_inputSoquete">Soquete</label>
-                                <select id="pcs_inputSoquete" class="form-control">
-                                    <option selected>Escolher...</option>
-                                </select>
-                            </div>
-						</div>
-                    </div>
-                    <div id="formPcsComLedIntegrado">
-                        <div class="form-row">
-                            <div class="form-group col-md-4">
-                                <label for="pcs_inputPotencia">Potência (W)</label>
-                                <input type="number" class="form-control" id="pcs_inputPotencia">
-                            </div>
-                            <div class="form-group col-md-4">
-                                <label for="pcs_inputTempCor">Temperatura da Cor (K)</label>
-                                <input type="text" class="form-control" id="pcs_inputTempCor">
-                            </div>
-                            <div class="form-group col-md-4">
-                                <label for="pcs_inputFluxo">Fluxo Luminoso (lm)</label>
-                                <input type="text" class="form-control" id="pcs_inputFluxo">
-                            </div>
-                        </div>
-                    </div>
-                    <div class="form-row">
-                        <div class="form-group col-md-3">
-                            <label for="pcs_inputTensao">Tensão (V)</label>
-                            <select id="pcs_inputTensao" class="form-control">
-                                <option selected>Escolher...</option>
-                                <option id="pcs_t110" value="110 V">127</option>
-                                <option id="pcs_t220" value="220 V">220</option>
-                                <option id="pcs_tBiv" value="127V/220V (Bivolt)">Bivolt</option>
-                            </select>
-                        </div>
-                    </div>
-                    <h5 class="mt-2">Aplicação</h5>
-                    <div class="form-group">
-                        <div class="form-check">
-                            <input class="form-check-input" type="radio" name="embutirSobrePor" id="pcs_embutir" value="Embutir">
-                            <label class="form-check-label" for="pcs_embutir">
-                                Embutir
-                            </label>
-                        </div>
-                        <div class="form-check">
-                            <input class="form-check-input" type="radio" name="embutirSobrePor" id="pcs_sobrePor" value="Sobrepor" checked>
-                            <label class="form-check-label" for="pcs_sobrePor">
-                                Sobrepor
-                            </label>
-                        </div>
-                    </div>
 
-                    <div class="form-group">
-                        <label for="pcs_inputPosicao">Posição</label>
-                        <select id="pcs_inputPosicao" class="form-control">
-                            <option selected>Escolher...</option>
-                            <option id="pcs_pTeto" value="Teto">Teto</option>
-                            <option id="pcs_pParede" value="Parede">Parede</option>
-                            <option id="pcs_pSolo" value="Solo">Solo</option>
-                            <option id="pcs_pParedeSolo" value="ParedeSolo">Parede ou Solo</option>
-                            <option id="pcs_pTetoParede" value="TetoParede">Teto ou Parede</option>
-                        </select>
+<head>
+  <meta charset="UTF-8">
+  <title>Ferramenta Montadora de Descrições</title>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+  <link rel="stylesheet" type="text/css" href="styles.css" />
+</head>
+
+<body>
+  <div class="container-fluid mt-4">
+
+    <div class="row">
+      <div class="col-md-2"></div>
+      <div class="col-md-8 bg-light">
+        <div class="row">
+          <div class="col">
+            <h1 class="text-center">Ferramenta Montadora de Descrições</h1>
+            <nav class="navbar navbar-expand-lg bg-light">
+              <div class="container-fluid">
+                <a class="navbar-brand">
+                  <img src="logo.png" alt="" width="60" height="48" class="d-inline-block align-text-top">
+                </a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                  <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNav">
+                  <ul class="navbar-nav nav-tabs">
+                    <li class="nav-item">
+                      <a class="nav-link" id="linkIluminacao">Peças</a>
+                    </li>
+                    <li class="nav-item">
+                      <a class="nav-link" id="linkLampadas">Lâmpadas</a>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </nav>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col">
+            <!-- Pecas -->
+            <form id="form1">
+              <h4 class="mt-2">Identificação do Produto</h4>
+              <hr />
+              <div class="form-row">
+                <div class="form-group col-md-6">
+                  <label for="pcs_inputFamilia">Família</label>
+                  <select id="pcs_inputFamilia" class="form-control">
+                    <option selected>Escolher...</option>
+                    <option id="pcs_fArandela" value="Arandela">Arandela</option>
+                    <option id="pcs_fPlafom" value="Plafon">Plafon</option>
+                    <option id="pcs_fPendente" value="Pendente">Pendente</option>
+                    <option id="pcs_fLustre" value="Lustre">Lustre</option>
+                    <option id="pcs_fEmbutido" value="Embutido">Embutido</option>
+                    <option id="pcs_fLuminaria" value="Luminaria">Luminária</option>
+                    <option id="pcs_fSpotSobrepor" value="SpotSoprepor">Spot de soprepor</option>
+                    <option id="pcs_fPoste" value="Poste">Poste</option>
+                    <option id="pcs_fRefletor" value="Refletor">Refletor</option>
+                    <option id="pcs_fBalizadorSolo" value="Balizador de Solo">Balizador de Solo</option>
+                  </select>
+                </div>
+                <div class="form-group col-md-6">
+                  <label for="pcs_inputFabricante">Fabricante</label>
+                  <input type="text" class="form-control" id="pcs_inputFabricante">
+                </div>
+              </div>
+              <div class="form-row">
+                <div class="form-group col-md-6">
+                  <label for="pcs_inputRef">Referência</label>
+                  <input type="text" class="form-control" id="pcs_inputRef">
+                </div>
+                <div class="form-group col-md-6">
+                  <label for="pcs_oNacional">Origem</label><br>
+                  <div class="mt-2 ml-4">
+                    <div class="form-check form-check-inline">
+                      <input class="form-check-input" type="radio" name="origemPcs" id="pcs_oNacional" value="Nacional" checked>
+                      <label class="form-check-label" for="pcs_oNacional">
+                        Nacional
+                      </label>
                     </div>
-                    <div class="form-group">
-                        <label for="pcs_inputAplicacao">Uso</label>
-                        <select id="pcs_inputAplicacao" class="form-control">
-                            <option selected>Escolher...</option>
-                            <option id="uInterno" value="Interno">Interno</option>
-                            <option id="uExterno" value="Externo">Externo</option>
-                            <option id="uInternoExterno" value="Interno ou Externo">Interno ou externo</option>
-                        </select>
+                    <div class="form-check form-check-inline">
+                      <input class="form-check-input" type="radio" name="origemPcs" id="pcs_oImport" value="Importado">
+                      <label class="form-check-label" for="pcs_oImport">
+                        Importado
+                      </label>
                     </div>
-                    <h5 class="mt-2">Aparência</h5>
-                    <!--div class="form-group">
+                  </div>
+                </div>
+              </div>
+              <h4 class="mt-2">Especificações do Produto</h4>
+              <hr />
+              <h5 class="mt-2">Iluminação</h5>
+              <div class="form-group">
+                <label for="pcs_inputFonteIluminacao">Fonte de Iluminação</label>
+                <select id="pcs_inputFonteIluminacao" class="form-control">
+                  <option selected>Escolher...</option>
+                  <option id="pcs_fLamp" value="Lâmpada">Lâmpada</option>
+                  <option id="pcs_fIntegrado" value="LED Integrado">LED Integrado</option>
+                </select>
+              </div>
+              <div id="formPcsComLamp">
+                <div class="form-row">
+                  <div class="form-group col-md-4">
+                    <label for=" ">Quantidade de Lâmpadas</label>
+                    <input type="number" class="form-control" id="pcs_inputQuantidadeLamps">
+                  </div>
+                  <div class="form-group col-md-8">
+                    <label for="pcs_inputTipoLamp">Tipo da Lâmpada</label>
+                    <select id="pcs_inputTipoLamp" class="form-control">
+                      <option selected>Escolher...</option>
+                    </select>
+                  </div>
+                </div>
+                <div class="form-row">
+                  <div class="form-group col-md-4">
+                    <label for="pcs_inputPotenciaMax">Potência Máx (W)</label>
+                    <input type="number" class="form-control" id="pcs_inputPotenciaMax">
+                  </div>
+                  <div class="form-group col-md-8">
+                    <label for="pcs_inputSoquete">Soquete</label>
+                    <select id="pcs_inputSoquete" class="form-control">
+                      <option selected>Escolher...</option>
+                    </select>
+                  </div>
+                </div>
+              </div>
+              <div id="formPcsComLedIntegrado">
+                <div class="form-row">
+                  <div class="form-group col-md-4">
+                    <label for="pcs_inputPotencia">Potência (W)</label>
+                    <input type="number" class="form-control" id="pcs_inputPotencia">
+                  </div>
+                  <div class="form-group col-md-4">
+                    <label for="pcs_inputTempCor">Temperatura da Cor (K)</label>
+                    <input type="text" class="form-control" id="pcs_inputTempCor">
+                  </div>
+                  <div class="form-group col-md-4">
+                    <label for="pcs_inputFluxo">Fluxo Luminoso (lm)</label>
+                    <input type="text" class="form-control" id="pcs_inputFluxo">
+                  </div>
+                </div>
+              </div>
+              <div class="form-row">
+                <div class="form-group col-md-3">
+                  <label for="pcs_inputTensao">Tensão (V)</label>
+                  <select id="pcs_inputTensao" class="form-control">
+                    <option selected>Escolher...</option>
+                    <option id="pcs_t110" value="110 V">127</option>
+                    <option id="pcs_t220" value="220 V">220</option>
+                    <option id="pcs_tBiv" value="127V/220V (Bivolt)">Bivolt</option>
+                  </select>
+                </div>
+              </div>
+              <h5 class="mt-2">Aplicação</h5>
+              <div class="form-group">
+                <div class="form-check">
+                  <input class="form-check-input" type="radio" name="embutirSobrePor" id="pcs_embutir" value="Embutir">
+                  <label class="form-check-label" for="pcs_embutir">
+                    Embutir
+                  </label>
+                </div>
+                <div class="form-check">
+                  <input class="form-check-input" type="radio" name="embutirSobrePor" id="pcs_sobrePor" value="Sobrepor" checked>
+                  <label class="form-check-label" for="pcs_sobrePor">
+                    Sobrepor
+                  </label>
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label for="pcs_inputPosicao">Posição</label>
+                <select id="pcs_inputPosicao" class="form-control">
+                  <option selected>Escolher...</option>
+                  <option id="pcs_pTeto" value="Teto">Teto</option>
+                  <option id="pcs_pParede" value="Parede">Parede</option>
+                  <option id="pcs_pSolo" value="Solo">Solo</option>
+                  <option id="pcs_pParedeSolo" value="ParedeSolo">Parede ou Solo</option>
+                  <option id="pcs_pTetoParede" value="TetoParede">Teto ou Parede</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <label for="pcs_inputAplicacao">Uso</label>
+                <select id="pcs_inputAplicacao" class="form-control">
+                  <option selected>Escolher...</option>
+                  <option id="uInterno" value="Interno">Interno</option>
+                  <option id="uExterno" value="Externo">Externo</option>
+                  <option id="uInternoExterno" value="Interno ou Externo">Interno ou externo</option>
+                </select>
+              </div>
+              <h5 class="mt-2">Aparência</h5>
+              <!--div class="form-group">
                         <div class="form-check">
                             <input class="form-check-input" type="radio" name="pVidro" id="pcs_sVidro" value="SemVidro" checked>
                             <label class="form-check-label" for="pcs_sVidro">
@@ -209,56 +207,56 @@
                             </label>
                         </div>
                     </div-->
-                    <h6>Dimensões</h6>
-                    <div class="form-row">
-                        <div class="form-group col-md-3">
-                            <label for="pcs_inputComprimento">Comprimento (cm)</label>
-                            <input type="number" class="form-control" id="pcs_inputComprimento">
-                        </div>
-                        <div class="form-group col-md-3">
-                            <label for="pcs_inputLargura">Largura (cm)</label>
-                            <input type="number" class="form-control" id="pcs_inputLargura">
-                        </div>
-                        <div class="form-group col-md-3">
-                            <label for="pcs_inputAltura">Altura (cm)</label>
-                            <input type="number" class="form-control" id="pcs_inputAltura">
-                        </div>
-                        <div class="form-group col-md-3">
-                            <label for="pcs_inputDiametro">Diâmetro (cm)</label>
-                            <input type="number" class="form-control" id="pcs_inputDiametro">
-                        </div>
-                    </div>
-                    <div id="pcs_dimensoesNicho">
-                        <h6>Dimensões do nicho:</h6>
-                        <div class="form-row">
-                            <div class="form-group col-md-4">
-                                <label for="pcs_inputComprimentoNicho">Comprimento (cm)</label>
-                                <input type="number" class="form-control" id="pcs_inputComprimentoNicho">
-                            </div>
-                            <div class="form-group col-md-4">
-                                <label for="pcs_inputLarguraNicho">Largura (cm)</label>
-                                <input type="number" class="form-control" id="pcs_inputLarguraNicho">
-                            </div>
-                            <div class="form-group col-md-4">
-                                <label for="pcs_inputDiametroNicho">Diâmetro (cm)</label>
-                                <input type="number" class="form-control" id="pcs_inputDiametroNicho">
-                            </div>
-                        </div>
-                    </div>
-                    <div id="pcs_dimensoesFio">
-                        <h6>Dimensões do fio:</h6>
-                        <div class="form-row">
-                            <div class="form-group col-md-4">
-                                <label for="pcs_inputComprimentoFio">Comprimento (cm)</label>
-                                <input type="number" class="form-control" id="pcs_inputComprimentoFio">
-                            </div>
-                            <div class="form-group col-md-4">
-                                <label for="pcs_inputDiametroFio">Diâmetro (cm)</label>
-                                <input type="number" class="form-control" id="pcs_inputDiametroFio">
-                            </div>
-                        </div>
-                    </div>
-                    <!--div id="pcs_dimensoesVidro">
+              <h6>Dimensões</h6>
+              <div class="form-row">
+                <div class="form-group col-md-3">
+                  <label for="pcs_inputComprimento">Comprimento (cm)</label>
+                  <input type="number" class="form-control" id="pcs_inputComprimento">
+                </div>
+                <div class="form-group col-md-3">
+                  <label for="pcs_inputLargura">Largura (cm)</label>
+                  <input type="number" class="form-control" id="pcs_inputLargura">
+                </div>
+                <div class="form-group col-md-3">
+                  <label for="pcs_inputAltura">Altura (cm)</label>
+                  <input type="number" class="form-control" id="pcs_inputAltura">
+                </div>
+                <div class="form-group col-md-3">
+                  <label for="pcs_inputDiametro">Diâmetro (cm)</label>
+                  <input type="number" class="form-control" id="pcs_inputDiametro">
+                </div>
+              </div>
+              <div id="pcs_dimensoesNicho">
+                <h6>Dimensões do nicho:</h6>
+                <div class="form-row">
+                  <div class="form-group col-md-4">
+                    <label for="pcs_inputComprimentoNicho">Comprimento (cm)</label>
+                    <input type="number" class="form-control" id="pcs_inputComprimentoNicho">
+                  </div>
+                  <div class="form-group col-md-4">
+                    <label for="pcs_inputLarguraNicho">Largura (cm)</label>
+                    <input type="number" class="form-control" id="pcs_inputLarguraNicho">
+                  </div>
+                  <div class="form-group col-md-4">
+                    <label for="pcs_inputDiametroNicho">Diâmetro (cm)</label>
+                    <input type="number" class="form-control" id="pcs_inputDiametroNicho">
+                  </div>
+                </div>
+              </div>
+              <div id="pcs_dimensoesFio">
+                <h6>Dimensões do fio:</h6>
+                <div class="form-row">
+                  <div class="form-group col-md-4">
+                    <label for="pcs_inputComprimentoFio">Comprimento (cm)</label>
+                    <input type="number" class="form-control" id="pcs_inputComprimentoFio">
+                  </div>
+                  <div class="form-group col-md-4">
+                    <label for="pcs_inputDiametroFio">Diâmetro (cm)</label>
+                    <input type="number" class="form-control" id="pcs_inputDiametroFio">
+                  </div>
+                </div>
+              </div>
+              <!--div id="pcs_dimensoesVidro">
                         <h6>Dimensões do Vidro:</h6>
                         <div class="form-row">
                             <div class="form-group col-md-4">
@@ -267,174 +265,185 @@
                             </div>
                         </div>
                     </div-->
-                    <div class="form-group">
-                        <label for="pcs_inputCor">Cor</label>
-                        <input type="text" class="form-control" id="pcs_inputCor">
-                    </div>
-                    <h5 class="mt-2">Material</h5>
-                    <label for="pcs_inputMaterial">Principal</label>
-                    <div class="form-group">
-                        <input type="text" class="form-control" id="pcs_inputMaterial">
-                    </div>
-                    <label for="pcs_inputAcabamento">Acabamento</label>
-                    <div class="form-group">
-                        <input type="text" class="form-control" id="pcs_inputAcabamento">
-                    </div>
-                    <div class="form-group">
-                        <label for="pcs_textObs"><h5 class="mt-2">Informações Adicionais</h5></label>
-                        <textarea class="form-control" id="pcs_textObs" rows="6"></textarea>
-                    </div>
+              <div class="form-group">
+                <label for="pcs_inputCor">Cor</label>
+                <input type="text" class="form-control" id="pcs_inputCor">
+              </div>
+              <h5 class="mt-2">Material</h5>
+              <label for="pcs_inputMaterial">Principal</label>
+              <div class="form-group">
+                <input type="text" class="form-control" id="pcs_inputMaterial">
+              </div>
+              <label for="pcs_inputAcabamento">Acabamento</label>
+              <div class="form-group">
+                <input type="text" class="form-control" id="pcs_inputAcabamento">
+              </div>
+              <div class="form-group">
+                <label for="pcs_textObs">
+                  <h5 class="mt-2">Informações Adicionais</h5>
+                </label>
+                <textarea class="form-control" id="pcs_textObs" rows="6"></textarea>
+              </div>
 
-                    <button type="button" class="btn btn-primary">Sign in</button>
-                </form>
-                <!--------------------------Lampadas------------------------------------->
-                <form id="form2">
-                    <h4 class="mt-2">Identificação do Produto</h4>
-                    <hr/>
-                    <div class="form-row">
-                        <div class="form-group col-md-6">
-                            <label for="lamp_inputFabricante">Fabricante</label>
-                            <input type="text" class="form-control" id="lamp_inputFabricante">
-                        </div>
-                        <div class="form-group col-md-6">
-                            <label for="lamp_inputRef">Referência</label>
-                            <input type="text" class="form-control" id="lamp_inputRef">
-                        </div>
+              <button type="button" class="btn btn-primary">Sign in</button>
+            </form>
+            <!--------------------------Lampadas------------------------------------->
+            <form id="form2">
+              <h4 class="mt-2">Identificação do Produto</h4>
+              <hr />
+              <div class="form-row">
+                <div class="form-group col-md-6">
+                  <label for="lamp_inputFabricante">Fabricante</label>
+                  <input type="text" class="form-control" id="lamp_inputFabricante">
+                </div>
+                <div class="form-group col-md-6">
+                  <label for="lamp_inputRef">Referência</label>
+                  <input type="text" class="form-control" id="lamp_inputRef">
+                </div>
+              </div>
+              <div class="form-row">
+                <div class="form-group col-md-6">
+                  <label for="lamp_inputModelo">Modelo/Tipo</label>
+                  <select id="lamp_inputModelo" class="form-control">
+                    <option selected>Escolher...</option>
+                  </select>
+                </div>
+                <div class="form-group col-md-6">
+                  <label for="lamp_inputTecnologia">Tecnologia</label>
+                  <select id="lamp_inputTecnologia" class="form-control">
+                    <option selected>Escolher...</option>
+                    <option id="lamp_tecLed" value="LED">LED</option>
+                    <option id="lamp_tecInc" value="Incandescente">Incandescente</option>
+                    <option id="lamp_tecFluor" value="Fluorescente">Fluorescente</option>
+                    <option id="lamp_tecHalo" value="Halôgena">Halôgena</option>
+                  </select>
+                </div>
+              </div>
+              <div class="form-row">
+                <div class="form-group">
+                  <label for="lamp_oNacional">Origem</label><br>
+                  <div class="mt-2 ml-4">
+                    <div class="form-check form-check-inline">
+                      <input class="form-check-input" type="radio" name="origemLamp" id="lamp_oNacional" value="Nacional" checked>
+                      <label class="form-check-label" for="lamp_oNacional">
+                        Nacional
+                      </label>
                     </div>
-                    <div class="form-row">
-                        <div class="form-group col-md-6">
-                            <label for="lamp_inputModelo">Modelo/Tipo</label>
-                            <select id="lamp_inputModelo" class="form-control">
-                                <option selected>Escolher...</option>
-                            </select>
-                        </div>
-                        <div class="form-group col-md-6">
-                            <label for="lamp_inputTecnologia">Tecnologia</label>
-                            <select id="lamp_inputTecnologia" class="form-control">
-                                <option selected>Escolher...</option>
-                                <option id="lamp_tecLed" value="LED">LED</option>
-                                <option id="lamp_tecInc" value="Incandescente">Incandescente</option>
-                                <option id="lamp_tecFluor" value="Fluorescente">Fluorescente</option>
-                                <option id="lamp_tecHalo" value="Halôgena">Halôgena</option>
-                            </select>
-                        </div>
+                    <div class="form-check form-check-inline">
+                      <input class="form-check-input" type="radio" name="origemLamp" id="lamp_oImport" value="Importado">
+                      <label class="form-check-label" for="lamp_oImport">
+                        Importado
+                      </label>
                     </div>
-                    <div class="form-row">
-                        <div class="form-group">
-                            <label for="lamp_oNacional">Origem</label><br>
-                            <div class="mt-2 ml-4">
-                                <div class="form-check form-check-inline">
-                                    <input class="form-check-input" type="radio" name="origemLamp" id="lamp_oNacional" value="Nacional" checked>
-                                    <label class="form-check-label" for="lamp_oNacional">
-                                        Nacional
-                                    </label>
-                                </div>
-                                <div class="form-check form-check-inline">
-                                    <input class="form-check-input" type="radio" name="origemLamp" id="lamp_oImport" value="Importado">
-                                    <label class="form-check-label" for="lamp_oImport">
-                                        Importado
-                                    </label>
-                                </div>
-                            </div>
-                        </div>
+                  </div>
+                </div>
+              </div>
+              <h4 class="mt-2">Especificações</h4>
+              <hr />
+              <div class="form-row">
+                <div class="form-group col-md-4">
+                  <label for="lamp_inputPotencia">Potência (W)</label>
+                  <input type="number" class="form-control" id="lamp_inputPotencia">
+                </div>
+                <div class="form-group col-md-4">
+                  <label for="lamp_inputTensao">Tensão (V)</label>
+                  <select id="lamp_inputTensao" class="form-control">
+                    <option selected>Escolher...</option>
+                    <option id="lamp_t12" value="12">12</option>
+                    <option id="lamp_t24" value="24">24</option>
+                    <option id="lamp_t110" value="110">127</option>
+                    <option id="lamp_t220" value="220">220</option>
+                    <option id="lamp_tBiv" value="Bivolt">Bivolt</option>
+                  </select>
+                </div>
+                <div class="form-group col-md-4">
+                  <label for="lamp_inputTempCor">Temperatura da Cor (K)</label>
+                  <input type="text" class="form-control" id="lamp_inputTempCor">
+                </div>
+              </div>
+              <div class="form-row">
+                <div class="form-group col-md-4">
+                  <label for="lamp_inputAngulo">Ângulo de abertura (º)</label>
+                  <input type="number" class="form-control" id="lamp_inputAngulo">
+                </div>
+                <div class="form-group col-md-4">
+                  <label for="lamp_inputFluxo">Fluxo Luminoso (lm)</label>
+                  <input type="text" class="form-control" id="lamp_inputFluxo">
+                </div>
+                <div class="form-group col-md-4">
+                  <label for="lamp_inputVidaUtil">Vida Útil (h)</label>
+                  <input type="text" class="form-control" id="lamp_inputVidaUtil">
+                </div>
+              </div>
+              <div class="form-row">
+                <div class="form-group col-md-6">
+                  <label for="lamp_inputSoquete">Soquete</label>
+                  <select id="lamp_inputSoquete" class="form-control">
+                    <option selected>Escolher...</option>
+                  </select>
+                </div>
+                <div class="form-group col-md-6">
+                  <br>
+                  <div class="mt-3 ml-4">
+                    <div class="form-check form-check-inline">
+                      <input class="form-check-input" type="radio" name="dimerizavelLamp" id="lamp_sDimerisavel" value="Sim" checked>
+                      <label class="form-check-label" for="lamp_sDimerisavel">
+                        Dimerisável
+                      </label>
                     </div>
-                    <h4 class="mt-2">Especificações</h4>
-                    <hr/>
-                    <div class="form-row">
-                        <div class="form-group col-md-4">
-                            <label for="lamp_inputPotencia">Potência (W)</label>
-                            <input type="number" class="form-control" id="lamp_inputPotencia">
-                        </div>
-                        <div class="form-group col-md-4">
-                            <label for="lamp_inputTensao">Tensão (V)</label>
-                            <select id="lamp_inputTensao" class="form-control">
-                                <option selected>Escolher...</option>
-                                <option id="lamp_t12" value="12">12</option>
-                                <option id="lamp_t24" value="24">24</option>
-                                <option id="lamp_t110" value="110">127</option>
-                                <option id="lamp_t220" value="220">220</option>
-                                <option id="lamp_tBiv" value="Bivolt">Bivolt</option>
-                            </select>
-                        </div>
-                        <div class="form-group col-md-4">
-                            <label for="lamp_inputTempCor">Temperatura da Cor (K)</label>
-                            <input type="text" class="form-control" id="lamp_inputTempCor">
-                        </div>
+                    <div class="form-check form-check-inline">
+                      <input class="form-check-input" type="radio" name="dimerizavelLamp" id="lamp_nDimerisavel" value="Nao">
+                      <label class="form-check-label" for="lamp_nDimerisavel">
+                        Não dimerisável
+                      </label>
                     </div>
-                    <div class="form-row">
-                        <div class="form-group col-md-4">
-                            <label for="lamp_inputAngulo">Ângulo de abertura (º)</label>
-                            <input type="number" class="form-control" id="lamp_inputAngulo">
-                        </div>
-                        <div class="form-group col-md-4">
-                            <label for="lamp_inputFluxo">Fluxo Luminoso (lm)</label>
-                            <input type="text" class="form-control" id="lamp_inputFluxo">
-                        </div>
-                        <div class="form-group col-md-4">
-                            <label for="lamp_inputVidaUtil">Vida Útil (h)</label>
-                            <input type="text" class="form-control" id="lamp_inputVidaUtil">
-                        </div>
-                    </div>
-                    <div class="form-row">
-                        <div class="form-group col-md-6">
-                            <label for="lamp_inputSoquete">Soquete</label>
-                            <select id="lamp_inputSoquete" class="form-control">
-                                <option selected>Escolher...</option>
-                            </select>
-                        </div>
-                        <div class="form-group col-md-6">
-                            <br>
-                            <div class="mt-3 ml-4">
-                                <div class="form-check form-check-inline">
-                                    <input class="form-check-input" type="radio" name="dimerizavelLamp" id="lamp_sDimerisavel" value="Sim" checked>
-                                    <label class="form-check-label" for="lamp_sDimerisavel">
-                                        Dimerisável
-                                    </label>
-                                </div>
-                                <div class="form-check form-check-inline">
-                                    <input class="form-check-input" type="radio" name="dimerizavelLamp" id="lamp_nDimerisavel" value="Nao">
-                                    <label class="form-check-label" for="lamp_nDimerisavel">
-                                        Não dimerisável
-                                    </label>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <h6>Dimensões</h6>
-                    <div class="form-row">
-                        <div class="form-group col-md-3">
-                            <label for="lamp_inputComprimento">Comprimento (mm)</label>
-                            <input type="number" class="form-control" id="lamp_inputComprimento">
-                        </div>
-                        <div class="form-group col-md-3">
-                            <label for="lamp_inputLargura">Largura (mm)</label>
-                            <input type="number" class="form-control" id="lamp_inputLargura">
-                        </div>
-                        <div class="form-group col-md-3">
-                            <label for="lamp_inputAltura">Altura (mm)</label>
-                            <input type="number" class="form-control" id="lamp_inputAltura">
-                        </div>
-                        <div class="form-group col-md-3">
-                            <label for="lamp_inputDiametro">Diâmetro (mm)</label>
-                            <input type="number" class="form-control" id="lamp_inputDiametro">
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <label for="lamp_textObsLamp"><h5 class="mt-2">Informações Adicionais</h5></label>
-                        <textarea class="form-control" id="lamp_textObsLamp" rows="6"></textarea>
-                    </div>
-                    
-                </form>
-                
-                <br><br>
-                <p class="bg-light" id="descricaoFinal"></p>
-                <p id="version"></p>
-            </div>
-            <div class="col-md-2"></div>
+                  </div>
+                </div>
+              </div>
+              <h6>Dimensões</h6>
+              <div class="form-row">
+                <div class="form-group col-md-3">
+                  <label for="lamp_inputComprimento">Comprimento (mm)</label>
+                  <input type="number" class="form-control" id="lamp_inputComprimento">
+                </div>
+                <div class="form-group col-md-3">
+                  <label for="lamp_inputLargura">Largura (mm)</label>
+                  <input type="number" class="form-control" id="lamp_inputLargura">
+                </div>
+                <div class="form-group col-md-3">
+                  <label for="lamp_inputAltura">Altura (mm)</label>
+                  <input type="number" class="form-control" id="lamp_inputAltura">
+                </div>
+                <div class="form-group col-md-3">
+                  <label for="lamp_inputDiametro">Diâmetro (mm)</label>
+                  <input type="number" class="form-control" id="lamp_inputDiametro">
+                </div>
+              </div>
+              <div class="form-group">
+                <label for="lamp_textObsLamp">
+                  <h5 class="mt-2">Informações Adicionais</h5>
+                </label>
+                <textarea class="form-control" id="lamp_textObsLamp" rows="6"></textarea>
+              </div>
+            </form>
+          </div>
+          <div class="col teste">
+            <p class="bg-light" id="descricaoFinal"></p>
+            
+          </div>
         </div>
+        <footer>
+            <p id="version"></p>
+        </footer>
+      </div>
+      <div class="col-md-2"></div>
     </div>
+  </div>
 
-    <script src="scripts.js"></script>
-    <script src="engine.js"></script>
+  <script src="scripts.js"></script>
+  <script src="engine.js"></script>
 </body>
+
+
+
 </html>
