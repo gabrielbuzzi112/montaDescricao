@@ -1,4 +1,4 @@
-let version = "v2.0 (21/07/2022)";
+let version = "v4.0 (05/09/2022)";
 
 $(document).ready(function(){
     $("#version").html(version);
@@ -17,7 +17,7 @@ function temperaturaCor (temp) {
     }
 }
 
-function writeInfoPcs (adicional) {
+function writeInfoPcs () {
     var texto;
     var pcsOrigem = $("input[name='origemPcs']:checked").val(); //
     var pcsFamilia = $("#pcs_inputFamilia").val(); //
@@ -28,6 +28,7 @@ function writeInfoPcs (adicional) {
     var pcsTipoLamp = $("#pcs_inputTipoLamp").val(); //
     var pcsSoquete = $("#pcs_inputSoquete").val(); //
     var pcsPotencia = $("#pcs_inputPotencia").val(); //
+	var pcsPotenciaMax = $("#pcs_inputPotenciaMax").val(); //
     var pcsTempCor = $("#pcs_inputTempCor").val(); //
     var pcsFluxo = $("#pcs_inputFluxo").val(); //
     var pcsTensao = $("#pcs_inputTensao").val(); //
@@ -48,28 +49,29 @@ function writeInfoPcs (adicional) {
     var pcsAcabamento = $("#pcs_inputAcabamento").val(); //
     var pcsObs = $("#pcs_textObs").val(); //
 
-    texto = "Família: " + pcsFamilia + "\n" +
-        "Fabricante: " + pcsFabricante + "\n" +
-        "Referência: " + pcsReferencia + "\n" +
-        "Origem: " + pcsOrigem + "\n" +
-        "Fonte de Iluminação: " + pcsFonte + "\n";
+    texto = "Família:" + pcsFamilia + "<br>" +
+        "Fabricante: " + pcsFabricante + "<br>" +
+        "Referência: " + pcsReferencia + "<br>" +
+        "Origem: " + pcsOrigem + "<br>" +
+        "Fonte de Iluminação: " + pcsFonte + "<br>";
 
     if(pcsFonte==="Lâmpada"){
-        texto += "Quantidade de Lâmpadas: " + pcsQtdLamp + " (Não Acompanha o Produto)\n" +
-            "Lâmpada Indicada: " + pcsTipoLamp + " (Não Acompanha o Produto)\n" +
-            "Soquete: " + pcsSoquete + "\n"
+        texto += "Quantidade de Lâmpadas: " + pcsQtdLamp + " (Não Acompanha o Produto)<br>" +
+            "Lâmpada Indicada: " + pcsTipoLamp + " (Não Acompanha o Produto)<br>" +
+            "Soquete: " + pcsSoquete + "<br>" +
+			"Potência Máx: " + pcsPotenciaMax + " W<br>"
         ;
     }
     else if(pcsFonte==="Integrado") {
-        texto += "Potência: " + pcsPotencia + " W\n" +
-            "Temperatura da Cor: " + temperaturaCor(pcsTempCor) +" ("+ pcsTempCor + " K)\n" +
-            "Fluxo luminoso: " + pcsFluxo + " lm\n"
+        texto += "Potência: " + pcsPotencia + " W<br>" +
+            "Temperatura da Cor: " + temperaturaCor(pcsTempCor) +" ("+ pcsTempCor + " K)<br>" +
+            "Fluxo luminoso: " + pcsFluxo + " lm<br>"
         ;
     }
 
-    texto += "Tensão: " + pcsTensao + "\n" +
-        "Posição: " + pcsEmbutirSobrepor + " no(a) " + pcsPosicao + "\n" +
-        "Ambiente: " + pcsAplicacao + "\n" +
+    texto += "Tensão: " + pcsTensao + "<br>" +
+        "Posição: " + pcsEmbutirSobrepor + " no(a) " + pcsPosicao + "<br>" +
+        "Ambiente: " + pcsAplicacao + "<br>" +
         "Dimensões(cm):"
     ;
     if(pcsComprimento) {
@@ -104,7 +106,7 @@ function writeInfoPcs (adicional) {
         }
     }
 
-    texto += "\n";
+    texto += "<br>";
 
     if(pcsEmbutirSobrepor==="Embutir"){
         texto += "Dimensões do Nicho(cm): ";
@@ -130,7 +132,7 @@ function writeInfoPcs (adicional) {
                 texto += " (Ø)" + pcsDiametroNicho;
             }
         }
-        texto += "\n";
+        texto += "<br>";
     }
 
     if(pcsFamilia==="Pendente") {
@@ -146,31 +148,36 @@ function writeInfoPcs (adicional) {
                 texto += " (Ø)" + pcsDiametroFio;
             }
         }
-        texto += "\n";
+        texto += "<br>";
     }
 
-    texto += "Cor: " + pcsCor + "\n" +
-        "Material: " + pcsMaterial + "\n";
+    texto += "Cor: " + pcsCor + "<br>" +
+        "Material: " + pcsMaterial + "<br>";
 
     if(pcsAcabamento) {
-	texto += "Acabamento: " + pcsAcabamento + "\n";
+	texto += "Acabamento: " + pcsAcabamento + "<br>";
     }	
 
     if(pcsObs) {
-        texto += pcsObs + "\n";
+        texto += pcsObs + "<br>";
     }
 
     
 
-    //alert(texto);
-    document.getElementById("descricaoFinal").innerHTML = texto;
-
+    let adicional = "";
+	
     $.get("texto.txt", function(text){
-        $("#descricaoFinal").append(text);
+        adicional = text;
     },"text");
+		
+	console.log(adicional);
+	
+	texto += "<br>"+adicional;
+		
+	$('#descricaoFinal').html(texto);
 }
 
-function writeInfoLamp (adicional) {
+function writeInfoLamp () {
     var texto;
     
     
@@ -194,19 +201,19 @@ function writeInfoLamp (adicional) {
     var lampObs = $("#lamp_textObsLamp").val(); //
 
     texto = 
-        "Fabricante: " + lampFabricante + "\n" +
-        "Referência: " + lampReferencia + "\n" +
-        "Tecnologia: " + lampTecnologia + "\n" +
-        "Modelo: " + lampModelo + "\n" +
-        "Origem: " + lampOrigem + "\n" +
-        "Potência: " + lampPotencia + " W\n" +
-        "Tensão: " + lampTensao + " V\n" +
-        "Temperatura da Cor: " + temperaturaCor(lampTempCor) +" ("+ lampTempCor + " K)\n" +
-        "Ângulo de Abertura: " + lampAngulo + "º\n" +
-        "Fluxo Luminoso: " + lampFluxo + " lm\n" +
-        "Vida Útil Estimada: " + lampVidaUtil + " horas\n" +
-        "Soquete: " + lampSoquete + "\n" +
-        "Dimerização: " + lampDimerizavel + "\n" +
+        "Fabricante:" + lampFabricante + "<br>" +
+        "Referência: " + lampReferencia + "<br>" +
+        "Tecnologia: " + lampTecnologia + "<br>" +
+        "Modelo: " + lampModelo + "<br>" +
+        "Origem: " + lampOrigem + "<br>" +
+        "Potência: " + lampPotencia + " W<br>" +
+        "Tensão: " + lampTensao + " V<br>" +
+        "Temperatura da Cor: " + temperaturaCor(lampTempCor) +" ("+ lampTempCor + " K)<br>" +
+        "Ângulo de Abertura: " + lampAngulo + "º<br>" +
+        "Fluxo Luminoso: " + lampFluxo + " lm<br>" +
+        "Vida Útil Estimada: " + lampVidaUtil + " horas<br>" +
+        "Soquete: " + lampSoquete + "<br>" +
+        "Dimerizável: " + lampDimerizavel + "<br>" +
         "Dimensões: ";
         
         if(lampComprimento) {
@@ -241,24 +248,32 @@ function writeInfoLamp (adicional) {
             }
         }
     
-        texto += "\n";
+        texto += "<br>";
 
         if(lampObs) {
-            texto += lampObs + "\n";
+            texto += lampObs + "<br>";
         }
 
-        document.getElementById("descricaoFinal").innerHTML = texto;
-
+        
+		//document.getElementById("descricaoFinal").innerHTML = texto;
+		
+		let adicional = "";
         $.get("texto.txt", function(text){
-            $("#descricaoFinal").append(text);
+            adicional = text;
         },"text");
+		
+		
+		
+		texto += "<br>"+adicional;
+		
+		$('#descricaoFial').html(texto);
 }
 $("#form1").change(function(){
-    writeInfoPcs(0);
+    writeInfoPcs();
 });
 
 $("#form2").change(function(){
-    writeInfoLamp(0);
+    writeInfoLamp();
 });
 
 

@@ -47,11 +47,11 @@
                 -->
                 <!-- Pecas -->
                 <form id="form1">
-                    <h4 class="mt-2">Identificacao do Produto</h4>
+                    <h4 class="mt-2">Identificação do Produto</h4>
                     <hr/>
                     <div class="form-row">
                         <div class="form-group col-md-6">
-                            <label for="pcs_inputFamilia">Familia</label>
+                            <label for="pcs_inputFamilia">Família</label>
                             <select id="pcs_inputFamilia" class="form-control">
                                 <option selected>Escolher...</option>
                                 <option id="pcs_fArandela" value="Arandela">Arandela</option>
@@ -73,7 +73,7 @@
                     </div>
                     <div class="form-row">
                         <div class="form-group col-md-6">
-                            <label for="pcs_inputRef">Referencia</label>
+                            <label for="pcs_inputRef">Referência</label>
                             <input type="text" class="form-control" id="pcs_inputRef">
                         </div>
                         <div class="form-group col-md-6">
@@ -94,41 +94,47 @@
                             </div>
                         </div>
                     </div>
-                    <h4 class="mt-2">Especificacoes do Produto</h4>
+                    <h4 class="mt-2">Especificações do Produto</h4>
                     <hr/>
-                    <h5 class="mt-2">Iluminacao</h5>
+                    <h5 class="mt-2">Iluminação</h5>
                     <div class="form-group">
-                        <label for="pcs_inputFonteIluminacao">Fonte de Iluminacao</label>
+                        <label for="pcs_inputFonteIluminacao">Fonte de Iluminação</label>
                         <select id="pcs_inputFonteIluminacao" class="form-control">
                             <option selected>Escolher...</option>
                             <option id="pcs_fLamp" value="Lâmpada">Lâmpada</option>
-                            <option id="pcs_fIntegrado" value="Integrado">LED Integrado</option>
+                            <option id="pcs_fIntegrado" value="LED Integrado">LED Integrado</option>
                         </select>
                     </div>
                     <div id="formPcsComLamp">
                         <div class="form-row">
                             <div class="form-group col-md-4">
-                                <label for=" ">Quantidade de Lampadas</label>
+                                <label for=" ">Quantidade de Lâmpadas</label>
                                 <input type="number" class="form-control" id="pcs_inputQuantidadeLamps">
                             </div>
                             <div class="form-group col-md-8">
-                                <label for="pcs_inputTipoLamp">Tipo da Lampada</label>
+                                <label for="pcs_inputTipoLamp">Tipo da Lâmpada</label>
                                 <select id="pcs_inputTipoLamp" class="form-control">
                                     <option selected>Escolher...</option>
                                 </select>
                             </div>
                         </div>
-                        <div class="form-group">
-                            <label for="pcs_inputSoquete">Soquete</label>
-                            <select id="pcs_inputSoquete" class="form-control">
-                                <option selected>Escolher...</option>
-                            </select>
-                        </div>
+                        <div class="form-row">
+                            <div class="form-group col-md-4">
+                                <label for="pcs_inputPotenciaMax">Potência Máx (W)</label>
+                                <input type="number" class="form-control" id="pcs_inputPotenciaMax">
+                            </div>
+                            <div class="form-group col-md-8">
+                                <label for="pcs_inputSoquete">Soquete</label>
+                                <select id="pcs_inputSoquete" class="form-control">
+                                    <option selected>Escolher...</option>
+                                </select>
+                            </div>
+						</div>
                     </div>
                     <div id="formPcsComLedIntegrado">
                         <div class="form-row">
                             <div class="form-group col-md-4">
-                                <label for="pcs_inputPotencia">Potencia (W)</label>
+                                <label for="pcs_inputPotencia">Potência (W)</label>
                                 <input type="number" class="form-control" id="pcs_inputPotencia">
                             </div>
                             <div class="form-group col-md-4">
@@ -143,17 +149,16 @@
                     </div>
                     <div class="form-row">
                         <div class="form-group col-md-3">
-                            <label for="pcs_inputTensao">Tensao (V)</label>
+                            <label for="pcs_inputTensao">Tensão (V)</label>
                             <select id="pcs_inputTensao" class="form-control">
                                 <option selected>Escolher...</option>
                                 <option id="pcs_t110" value="110 V">127</option>
                                 <option id="pcs_t220" value="220 V">220</option>
-                                <option id="pcs_tBiv" value="Bivolt">Bivolt</option>
+                                <option id="pcs_tBiv" value="127V/220V (Bivolt)">Bivolt</option>
                             </select>
                         </div>
                     </div>
-
-                    <h5 class="mt-2">Aplicacao</h5>
+                    <h5 class="mt-2">Aplicação</h5>
                     <div class="form-group">
                         <div class="form-check">
                             <input class="form-check-input" type="radio" name="embutirSobrePor" id="pcs_embutir" value="Embutir">
@@ -170,7 +175,7 @@
                     </div>
 
                     <div class="form-group">
-                        <label for="pcs_inputPosicao">Posicao</label>
+                        <label for="pcs_inputPosicao">Posição</label>
                         <select id="pcs_inputPosicao" class="form-control">
                             <option selected>Escolher...</option>
                             <option id="pcs_pTeto" value="Teto">Teto</option>
@@ -186,7 +191,7 @@
                             <option selected>Escolher...</option>
                             <option id="uInterno" value="Interno">Interno</option>
                             <option id="uExterno" value="Externo">Externo</option>
-                            <option id="uInternoExterno" value="InternoExterno">Interno ou externo</option>
+                            <option id="uInternoExterno" value="Interno ou Externo">Interno ou externo</option>
                         </select>
                     </div>
                     <h5 class="mt-2">Aparência</h5>
@@ -204,7 +209,7 @@
                             </label>
                         </div>
                     </div-->
-                    <h6>Dimensoes</h6>
+                    <h6>Dimensões</h6>
                     <div class="form-row">
                         <div class="form-group col-md-3">
                             <label for="pcs_inputComprimento">Comprimento (cm)</label>
@@ -219,12 +224,12 @@
                             <input type="number" class="form-control" id="pcs_inputAltura">
                         </div>
                         <div class="form-group col-md-3">
-                            <label for="pcs_inputDiametro">Diametro (cm)</label>
+                            <label for="pcs_inputDiametro">Diâmetro (cm)</label>
                             <input type="number" class="form-control" id="pcs_inputDiametro">
                         </div>
                     </div>
                     <div id="pcs_dimensoesNicho">
-                        <h6>Dimensoes do nicho:</h6>
+                        <h6>Dimensões do nicho:</h6>
                         <div class="form-row">
                             <div class="form-group col-md-4">
                                 <label for="pcs_inputComprimentoNicho">Comprimento (cm)</label>
@@ -235,7 +240,7 @@
                                 <input type="number" class="form-control" id="pcs_inputLarguraNicho">
                             </div>
                             <div class="form-group col-md-4">
-                                <label for="pcs_inputDiametroNicho">Diametro (cm)</label>
+                                <label for="pcs_inputDiametroNicho">Diâmetro (cm)</label>
                                 <input type="number" class="form-control" id="pcs_inputDiametroNicho">
                             </div>
                         </div>
@@ -248,7 +253,7 @@
                                 <input type="number" class="form-control" id="pcs_inputComprimentoFio">
                             </div>
                             <div class="form-group col-md-4">
-                                <label for="pcs_inputDiametroFio">Diametro (cm)</label>
+                                <label for="pcs_inputDiametroFio">Diâmetro (cm)</label>
                                 <input type="number" class="form-control" id="pcs_inputDiametroFio">
                             </div>
                         </div>
@@ -284,7 +289,7 @@
                 </form>
                 <!--------------------------Lampadas------------------------------------->
                 <form id="form2">
-                    <h4 class="mt-2">Identificacao do Produto</h4>
+                    <h4 class="mt-2">Identificação do Produto</h4>
                     <hr/>
                     <div class="form-row">
                         <div class="form-group col-md-6">
@@ -292,7 +297,7 @@
                             <input type="text" class="form-control" id="lamp_inputFabricante">
                         </div>
                         <div class="form-group col-md-6">
-                            <label for="lamp_inputRef">Referencia</label>
+                            <label for="lamp_inputRef">Referência</label>
                             <input type="text" class="form-control" id="lamp_inputRef">
                         </div>
                     </div>
@@ -333,15 +338,15 @@
                             </div>
                         </div>
                     </div>
-                    <h4 class="mt-2">Especificacoes</h4>
+                    <h4 class="mt-2">Especificações</h4>
                     <hr/>
                     <div class="form-row">
                         <div class="form-group col-md-4">
-                            <label for="lamp_inputPotencia">Potencia (W)</label>
+                            <label for="lamp_inputPotencia">Potência (W)</label>
                             <input type="number" class="form-control" id="lamp_inputPotencia">
                         </div>
                         <div class="form-group col-md-4">
-                            <label for="lamp_inputTensao">Tensao (V)</label>
+                            <label for="lamp_inputTensao">Tensão (V)</label>
                             <select id="lamp_inputTensao" class="form-control">
                                 <option selected>Escolher...</option>
                                 <option id="lamp_t12" value="12">12</option>
@@ -358,7 +363,7 @@
                     </div>
                     <div class="form-row">
                         <div class="form-group col-md-4">
-                            <label for="lamp_inputAngulo">Angulo de abertura (º)</label>
+                            <label for="lamp_inputAngulo">Ângulo de abertura (º)</label>
                             <input type="number" class="form-control" id="lamp_inputAngulo">
                         </div>
                         <div class="form-group col-md-4">
@@ -366,7 +371,7 @@
                             <input type="text" class="form-control" id="lamp_inputFluxo">
                         </div>
                         <div class="form-group col-md-4">
-                            <label for="lamp_inputVidaUtil">Vida Util (h)</label>
+                            <label for="lamp_inputVidaUtil">Vida Útil (h)</label>
                             <input type="text" class="form-control" id="lamp_inputVidaUtil">
                         </div>
                     </div>
@@ -381,21 +386,21 @@
                             <br>
                             <div class="mt-3 ml-4">
                                 <div class="form-check form-check-inline">
-                                    <input class="form-check-input" type="radio" name="dimerizavelLamp" id="lamp_sDimerisavel" value="Dimerisavel" checked>
+                                    <input class="form-check-input" type="radio" name="dimerizavelLamp" id="lamp_sDimerisavel" value="Sim" checked>
                                     <label class="form-check-label" for="lamp_sDimerisavel">
                                         Dimerisável
                                     </label>
                                 </div>
                                 <div class="form-check form-check-inline">
-                                    <input class="form-check-input" type="radio" name="dimerizavelLamp" id="lamp_nDimerisavel" value="Nao Dimerisavel">
+                                    <input class="form-check-input" type="radio" name="dimerizavelLamp" id="lamp_nDimerisavel" value="Nao">
                                     <label class="form-check-label" for="lamp_nDimerisavel">
-                                        Nao dimerisável
+                                        Não dimerisável
                                     </label>
                                 </div>
                             </div>
                         </div>
                     </div>
-                    <h6>Dimensoes</h6>
+                    <h6>Dimensões</h6>
                     <div class="form-row">
                         <div class="form-group col-md-3">
                             <label for="lamp_inputComprimento">Comprimento (mm)</label>
@@ -410,7 +415,7 @@
                             <input type="number" class="form-control" id="lamp_inputAltura">
                         </div>
                         <div class="form-group col-md-3">
-                            <label for="lamp_inputDiametro">Diametro (mm)</label>
+                            <label for="lamp_inputDiametro">Diâmetro (mm)</label>
                             <input type="number" class="form-control" id="lamp_inputDiametro">
                         </div>
                     </div>
@@ -422,7 +427,7 @@
                 </form>
                 
                 <br><br>
-                <textarea class="form-control" id="descricaoFinal" rows="20"></textarea>
+                <p class="bg-light" id="descricaoFinal"></p>
                 <p id="version"></p>
             </div>
             <div class="col-md-2"></div>
